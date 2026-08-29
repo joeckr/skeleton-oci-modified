@@ -1,0 +1,18 @@
+template:
+  app: oci-modified
+  image: ghcr.io/joeckr/oci-modified
+  name: oci-modified
+  port: 8080
+  pullPolicy: Always
+  replicaCount: 1
+  resources: {}
+  storageAccessMode: ReadWriteOnce
+  storageSize: 1Gi
+  storageClass: ""
+  tag: latest
+
+route:
+  enabled: "true"
+
+ingress:
+  enabled: "false"
