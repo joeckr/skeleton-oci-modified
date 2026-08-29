@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.template.name}}
+  labels:
+    app: {{ .Values.template.app }}
+spec:
+  replicas: {{ .Values.template.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.template.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.template.app }}
+    spec:
+      automountServiceAccountToken: false
+      volumes:
+        - name: template-storage
+          persistentVolumeClaim:
+            claimName: template-pvc
+        - name: template-txt
+          configMap:
+            name: template-txt
+      containers:
+        - name: {{ .Values.template.name }}
+          image: "{{ .Values.template.image }}:{{ .Values.template.tag }}"
+          imagePullPolicy: {{ .Values.template.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.template.port }}
+              name: {{ .Values.template.name }}
+          env:
+            - name: ENV
+              value: {{ .Values.template.env | quote }}
+          volumeMounts:
+            - name: template-storage
+              mountPath: /tmp
+            - name: template-txt
+              mountPath: /app/template.txt
+              subPath: template.txt

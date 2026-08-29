@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ "v*" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+  security-events: write
+
+jobs:
+  matrix-build:
+    uses: joeckr/ci-templates/.github/workflows/build-oc-modified.yml@v1
+    with:
+      image: "oci-modified"
+    secrets: inherit
