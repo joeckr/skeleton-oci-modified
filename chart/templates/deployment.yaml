@@ -38,7 +38,7 @@ spec:
               value: {{ .Values.template.env | quote }}
           volumeMounts:
             - name: template-storage
-              mountPath: /tmp
+              mountPath: /tmp/data
             - name: template-txt
               mountPath: /app/template.txt
               subPath: template.txt
