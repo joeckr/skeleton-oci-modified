@@ -8,8 +8,12 @@ hooks = [
     { id = "no-commit-to-branch", args = ['--branch', 'main', '--branch', 'master'] },
     { id = "trailing-whitespace" },
     { id = "end-of-file-fixer" },
-    { id = "check-yaml" },
+    { id = "check-yaml", exclude = "^(.*templates/.*|charts/.*|Helm/.*)$" },
     { id = "check-toml" },
+    { id = "check-json" },
+    { id = "check-xml" },
+    { id = "forbid-submodules" },
+    { id = "check-merge-conflict" },
     { id = "check-added-large-files" }
 ]
 
@@ -44,5 +48,14 @@ hooks = [
             "-v"
         ],
         types_or = ["python", "go", "javascript", "rust"]
-    }
+    },
+    {
+        id = "helm-lint",
+        name = "helm-lint",
+        entry = "helm lint chart/",
+        language = "system",
+        files = "^.*(Chart\\.yaml|values\\.yaml|templates/.*\\.yaml)$",
+        pass_filenames = false
+    },
+
 ]

@@ -1,7 +1,7 @@
 [
   {
-    "major": "3",
-    "upstream": "3.24",
+    "major": "1",
+    "upstream": "1.31.5",
     "latest": true
   }
 ]

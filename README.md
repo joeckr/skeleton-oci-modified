@@ -4,7 +4,7 @@ This project exists as a template for those who want to create their own images.
 
 Most of the images I create are OpenShift compliant and may also include some nice to have features.
 
-This repo just has an Alpine image that gets built to serve as a template.
+This repo just has an NGINX image that gets built to serve as a template.
 
 This template includes:
 
