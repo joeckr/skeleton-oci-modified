@@ -14,6 +14,10 @@ spec:
       labels:
         app: {{ .Values.template.app }}
     spec:
+      {{- with .Values.template.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       automountServiceAccountToken: false
       volumes:
         - name: template-storage

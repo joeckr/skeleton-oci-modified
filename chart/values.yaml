@@ -10,6 +10,7 @@ template:
   storageSize: 1Gi
   storageClass: ""
   tag: latest
+  tolerations:
 
 ingress:
   host: "" # Put your own domain here
