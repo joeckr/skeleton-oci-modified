@@ -11,8 +11,6 @@ template:
   storageClass: ""
   tag: latest
 
-route:
-  enabled: "true"
-
 ingress:
-  enabled: "false"
+  host: "" # Put your own domain here
+  route: "true"
