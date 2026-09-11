@@ -1,4 +1,4 @@
-name: Publish Helm Chart
+name: TEST Publish Helm Chart
 
 on:
   pull_request:
