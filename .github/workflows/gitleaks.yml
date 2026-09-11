@@ -1,0 +1,11 @@
+name: Gitleaks Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  gitleaks:
+    uses: joeckr/ci-templates/.github/workflows/gitleaks.yml@v1.3.0
