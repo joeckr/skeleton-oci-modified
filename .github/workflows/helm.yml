@@ -14,3 +14,4 @@ jobs:
     uses: joeckr/ci-templates/.github/workflows/push-helm-ghcr.yml@v1.1.0
     with:
       charts-dir: 'chart'
+      subpath: 'charts'

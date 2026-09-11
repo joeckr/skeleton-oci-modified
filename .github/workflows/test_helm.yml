@@ -13,3 +13,4 @@ jobs:
     with:
       charts-dir: 'chart'
       dry-run: true
+      subpath: 'charts'
