@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: template-txt
+  name: {{ .Values.configMap.name }}
   labels:
     app: {{ .Values.template.app }}
 data:
-  template.txt: |
-    {{ .Files.Get (print "config/template.txt") | nindent 4 }}
+  {{ .Values.configMap.file }}: |
+    {{ .Files.Get (print "config/" .Values.configMap.file) | nindent 4 }}
