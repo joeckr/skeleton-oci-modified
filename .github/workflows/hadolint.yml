@@ -1,0 +1,13 @@
+name: Run Hadolint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  hadolint:
+    uses: joeckr/ci-templates/.github/workflows/hadolint.yml@v1.5.0
+    with:
+      dockerfile: 'Dockerfile'
