@@ -1,0 +1,11 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    uses: joeckr/ci-templates/.github/workflows/semantic.yml@v1.3.0

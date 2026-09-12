@@ -1,0 +1,13 @@
+name: TEST Release
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    uses: joeckr/ci-templates/.github/workflows/semantic.yml@v1.3.0
+    with:
+      dry-run: true
