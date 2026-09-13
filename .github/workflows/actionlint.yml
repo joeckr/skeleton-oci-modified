@@ -8,4 +8,6 @@ on:
 
 jobs:
   actionlint:
-    uses: joeckr/ci-templates/.github/workflows/actionlint.yml@v1.6.0
+    permissions:
+      contents: read
+    uses: joeckr/ci-templates/.github/workflows/actionlint.yml@cfd448b6e12c0572704485e390efc564eb4083a9 # v1.6.0

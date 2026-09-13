@@ -1,6 +1,5 @@
 [tools]
 gitleaks = "v8.18.4"
-"cargo:prek" = "0.4.13"
 "go:github.com/google/addlicense" = "v1.2.0"
 trivy = "v0.74.0"
 helm = "v3.14.0"

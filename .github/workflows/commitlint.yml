@@ -8,4 +8,6 @@ on:
 
 jobs:
   commitlint:
-    uses: joeckr/ci-templates/.github/workflows/commitlint.yml@v1.5.0
+    permissions:
+      contents: read
+    uses: joeckr/ci-templates/.github/workflows/commitlint.yml@d7fc8210efc542ec3c20b118732bc0df030c7f5f # v1.5.0
