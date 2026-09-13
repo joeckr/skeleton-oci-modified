@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   matrix-build:
-    uses: joeckr/ci-templates/.github/workflows/build-oci-modified.yml@v1.1.0
+    uses: joeckr/ci-templates/.github/workflows/build-oci-modified.yml@v1.7.0
     with:
       image: "oci-modified"
     secrets: inherit
