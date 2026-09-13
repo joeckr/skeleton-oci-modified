@@ -4,6 +4,7 @@ gitleaks = "v8.18.4"
 trivy = "v0.74.0"
 helm = "v3.14.0"
 actionlint = "latest"
+hadolint = "2.15.1"
 
 [tasks.install]
 description = "Install tools, hook up hooks, and prepare environment"
