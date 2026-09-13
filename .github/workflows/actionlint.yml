@@ -1,0 +1,11 @@
+name: Run Actionlint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  actionlint:
+    uses: joeckr/ci-templates/.github/workflows/actionlint.yml@v1.6.0
