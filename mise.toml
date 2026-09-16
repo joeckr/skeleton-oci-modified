@@ -7,11 +7,12 @@ actionlint = "latest"
 hadolint = "2.15.1"
 shellcheck = "latest"
 zizmor = "latest"
+hk = "latest"
 
 [tasks.install]
 description = "Install tools, hook up hooks, and prepare environment"
 run = """
-prek install
+hk install --mise
 """
 
 [tasks.build]
@@ -26,10 +27,11 @@ run = """
 docker compose up -d --build
 """
 
-[tasks.prek]
-description = "Run pre-commit hooks"
+[tasks.hk]
+description = "Run hk checks on all files"
+alias = "check"
 run = """
-prek run --all-files
+hk check --all
 """
 
 [tasks.trivy-fs]
