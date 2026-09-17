@@ -20,6 +20,7 @@ steps {
   ["tombi-format"] = Builtins.tombi_format
   ["yamllint"] = (Builtins.yamllint) {
     exclude = List("**/templates/**")
+    check = "yamllint -d '{extends: default, rules: {line-length: {max: 140, level: warning}, truthy: {check-keys: false}, document-start: disable}}' --strict {{files}}"
   }
 
   ["addlicense"] {
