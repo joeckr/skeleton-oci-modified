@@ -14,20 +14,12 @@ steps {
   ["zizmor"] = Builtins.zizmor
   ["hadolint"] = Builtins.hadolint
   ["shellcheck"] = Builtins.shellcheck
-
-  ["gitleaks"] {
-    check = "gitleaks detect --verbose --redact --no-git"
-  }
-
-  ["check-yaml"] {
-    glob = List("**/*.yaml", "**/*.yml")
-    exclude = Regex(#"^(.*templates/.*|charts/.*|Helm/.*)$"#)
-    check = "ruby -ryaml -e 'ARGV.each { |f| YAML.load_stream(File.read(f)) }' {{files}}"
-  }
-
-  ["check-toml"] {
-    glob = "**/*.toml"
-    check = "python3 -c 'import tomllib, sys; [tomllib.load(open(f, \"rb\")) for f in sys.argv[1:]]' {{files}}"
+  ["betterleaks"] = Builtins.betterleaks
+  ["pkl"] = Builtins.pkl
+  ["tombi"] = Builtins.tombi
+  ["tombi-format"] = Builtins.tombi_format
+  ["yamllint"] = (Builtins.yamllint) {
+    exclude = List("**/templates/**")
   }
 
   ["addlicense"] {
