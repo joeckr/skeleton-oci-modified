@@ -44,7 +44,7 @@ service:
 
 ingress:
   name: template-ingress
-  host: "test.joeckr.dev" # Put your own domain here
+  host: "test.joeckr.dev"  # Put your own domain here
   route: "false"
   className: "nginx"
   path: /
