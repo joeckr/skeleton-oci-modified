@@ -41,6 +41,12 @@ This skeleton provides a standardized approach to:
 4. **Configure Build Versions**
    Update `versions.json` with the upstream image versions you wish to build.
 
+## Support
+
+If you find this project useful, consider supporting my work on [Ko-fi](https://ko-fi.com/joeckr):
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/joeckr)
+
 ## License
 
 Please refer to the `LICENSE` file for details.
