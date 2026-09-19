@@ -23,7 +23,7 @@ This skeleton provides a standardized approach to:
 
 - `Dockerfile`: The template Dockerfile demonstrating how to adapt an image (NGINX by default) for compliance.
 - `chart/`: The accompanying Helm chart for deploying the application.
-- `docker-compose.yml`: For local testing and development.
+- `compose.yml`: For local testing and development.
 - `versions.json`: Used by CI workflows to determine which versions of the image to build.
 - `.github/workflows/`: CI/CD pipelines for building and pushing the images.
 
