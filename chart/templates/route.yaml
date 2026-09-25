@@ -5,7 +5,7 @@ kind: Route
 metadata:
   name: "{{ .Values.ingress.name}}-route"
   labels:
-    app: {{ .Values.template.app }}
+    app: {{ .Values.template.name }}
 spec:
   host: {{ .Values.ingress.host }}
   to:

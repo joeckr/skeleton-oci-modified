@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.template.name}}
+  name: {{ .Values.template.name }}
   labels:
-    app: {{ .Values.template.app }}
+    app: {{ .Values.template.name }}
 spec:
   replicas: {{ .Values.template.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.template.app }}
+      app: {{ .Values.template.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.template.app }}
+        app: {{ .Values.template.name }}
     spec:
       {{- with .Values.template.podSecurityContext }}
       securityContext:

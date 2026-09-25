@@ -1,5 +1,4 @@
 template:
-  app: oci-modified
   image: ghcr.io/joeckr/oci-modified
   name: oci-modified
   podSecurityContext:
@@ -42,6 +41,7 @@ configMap:
 service:
   name: template-service
   port: 8080
+  type: NodePort
 
 ingress:
   name: template-ingress
