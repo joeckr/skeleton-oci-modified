@@ -6,6 +6,7 @@ template:
     runAsNonRoot: true
     seccompProfile:
       type: RuntimeDefault
+    fsGroup: 1031 # take this out if deploying to OpenShift
   port: 8080
   pullPolicy: Always
   replicaCount: 1
