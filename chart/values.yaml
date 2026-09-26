@@ -1,6 +1,7 @@
-template:
+app:
   image: ghcr.io/joeckr/oci-modified
   name: oci-modified
+  env: "dev"
   podSecurityContext:
     runAsNonRoot: true
     seccompProfile:
@@ -44,6 +45,7 @@ service:
   type: NodePort
 
 ingress:
+  enabled: true
   name: template-ingress
   host: "test.joeckr.dev"  # Put your own domain here
   route: "false"

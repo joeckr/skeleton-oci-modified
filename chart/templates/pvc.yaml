@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Values.pvc.name }}
   labels:
-    app: {{ .Values.template.app }}
+    app: {{ .Values.app.name }}
 spec:
   accessModes:
     - {{ .Values.pvc.storageAccessMode }}

@@ -188,7 +188,7 @@ mise run play-d
    helm dependency build chart/
    helm template test chart/ > rendered.yaml
    ```
-2. Executes `podman play kube rendered.yaml`, which:
+2. Executes `podman play kube rendered.yaml --publish-all`, which:
    - Reads the multi-document Kubernetes YAML (`ConfigMap`, `PersistentVolumeClaim`, `Service`, `Deployment`, `Ingress`).
    - Creates a local Podman pod matching the Kubernetes `Deployment` specification.
    - Applies the pod's `securityContext` (`runAsNonRoot: true`, capabilities drop, seccomp profile).
@@ -248,7 +248,7 @@ Configure `chart/values.yaml` for Talos Linux:
     pathType: "Prefix"
   ```
 - **StorageClass**: If your Talos cluster uses a specific CSI storage provisioner (e.g., `local-path`, `mayastor`, `ceph-block`), configure `pvc.storageClass` in `values.yaml` or leave it empty `""` to use the cluster's default StorageClass.
-- **Security Context & fsGroup**: Under `template.podSecurityContext`, `fsGroup: 1031` ensures mounted volumes are writable by the container user in vanilla Kubernetes / Talos Linux. If deploying to OpenShift, remove or comment out `fsGroup` as OpenShift's SCC dynamically allocates fsGroups.
+- **Security Context & fsGroup**: Under `app.podSecurityContext`, `fsGroup: 1031` ensures mounted volumes are writable by the container user in vanilla Kubernetes / Talos Linux. If deploying to OpenShift, remove or comment out `fsGroup` as OpenShift's SCC dynamically allocates fsGroups.
 
 #### 2. Linting & Template Validation
 
@@ -316,21 +316,23 @@ mise run helm-u
 
 All testing, linting, and lifecycle operations are conveniently accessible through `mise`:
 
-| Mise Task | Command | Description |
+| Task | Description | Command |
 |---|---|---|
-| `mise run compose` | `podman compose up -d --build` | Build and run the modified image in Podman Compose |
-| `mise run down` | `podman compose down` | Stop and remove the modified Podman Compose stack |
-| `mise run play` | `podman play kube rendered.yaml` | Render chart and run manifests locally via Podman Play Kube |
-| `mise run play-d` | `podman play kube rendered.yaml --down` | Teardown the Podman Play Kube deployment |
-| `mise run logs` | `podman compose logs -f` | Follow logs from the Podman Compose stack |
-| `mise run helm-d` | `helm dependency build chart/` | Update and build Helm chart dependencies |
-| `mise run helm-l` | `helm lint chart/` | Lint the Helm chart for errors |
-| `mise run helm-t` | `helm template test chart/ > rendered.yaml` | Render Helm templates to `rendered.yaml` |
-| `mise run helm-i` | `helm install test chart/` | Install the Helm chart to the current Kubernetes cluster |
-| `mise run helm-u` | `helm uninstall test` | Uninstall the Helm chart release from the cluster |
-| `mise run hk` | `hk check --all` | Run all repository pre-commit and formatting checks |
-| `mise run trivy-fs` | `trivy fs .` | Scan repository filesystem for security vulnerabilities |
-| `mise run trivy-i` | `trivy image ghcr.io/joeckr/oci-modified:test` | Scan the built container image with Trivy |
+| `install` | Install Git hooks (`pre-commit` and `commit-msg`). | `hk install --mise` |
+| `hk` (or `check`) | Run all repository pre-commit and formatting checks. | `hk check --all` |
+| `compose` | Build and run the modified image in Podman Compose. | `podman compose up -d --build` |
+| `down` | Stop and remove the modified Podman Compose stack. | `podman compose down` |
+| `logs` | Follow logs from the Podman Compose stack. | `podman compose logs -f` |
+| `play` | Render chart and run manifests locally via Podman Play Kube. | `podman play kube rendered.yaml --publish-all` |
+| `play-d` | Teardown the Podman Play Kube deployment. | `podman play kube rendered.yaml --down` |
+| `helm-d` | Update and build Helm chart dependencies. | `helm dependency build chart/` |
+| `helm-l` | Lint the Helm chart for errors. | `helm lint chart/` |
+| `helm-t` | Render Helm templates to `rendered.yaml`. | `helm template test chart/ > rendered.yaml` |
+| `helm-i` | Install the Helm chart to the current Kubernetes cluster. | `helm install test chart/` |
+| `helm-u` | Uninstall the Helm chart release from the cluster. | `helm uninstall test` |
+| `build` | Build local test container image for `linux/amd64`. | `podman buildx build --platform linux/amd64 -t ghcr.io/joeckr/oci-modified:test . --load` |
+| `trivy-fs` | Scan repository filesystem for security vulnerabilities. | `trivy fs .` |
+| `trivy-i` | Scan the built container image with Trivy. | `trivy image ghcr.io/joeckr/oci-modified:test` |
 
 ---
 
