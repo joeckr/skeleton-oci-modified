@@ -1,11 +1,10 @@
-
 {{- if eq .Values.ingress.route "true" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: "{{ .Values.ingress.name}}-route"
   labels:
-    app: {{ .Values.template.app }}
+    app: {{ .Values.app.name }}
 spec:
   host: {{ .Values.ingress.host }}
   to:
@@ -13,7 +12,7 @@ spec:
     name: {{ .Values.service.name }}
     weight: 100
   port:
-    targetPort: {{ .Values.template.port }}
+    targetPort: {{ .Values.app.port }}
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect

@@ -1,11 +1,12 @@
-template:
-  app: oci-modified
+app:
   image: ghcr.io/joeckr/oci-modified
   name: oci-modified
+  env: "dev"
   podSecurityContext:
     runAsNonRoot: true
     seccompProfile:
       type: RuntimeDefault
+    fsGroup: 1031 # take this out if deploying to OpenShift
   port: 8080
   pullPolicy: Always
   replicaCount: 1
@@ -41,8 +42,10 @@ configMap:
 service:
   name: template-service
   port: 8080
+  type: NodePort
 
 ingress:
+  enabled: true
   name: template-ingress
   host: "test.joeckr.dev"  # Put your own domain here
   route: "false"

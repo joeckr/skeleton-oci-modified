@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Values.configMap.name }}
   labels:
-    app: {{ .Values.template.app }}
+    app: {{ .Values.app.name }}
 data:
   {{ .Values.configMap.file }}: |
     {{ .Files.Get (print "config/" .Values.configMap.file) | nindent 4 }}
