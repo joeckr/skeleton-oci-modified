@@ -6,7 +6,7 @@ app:
     runAsNonRoot: true
     seccompProfile:
       type: RuntimeDefault
-    fsGroup: 1031 # take this out if deploying to OpenShift
+    fsGroup: 1031
   port: 8080
   pullPolicy: Always
   replicaCount: 1
@@ -48,7 +48,6 @@ ingress:
   enabled: true
   name: template-ingress
   host: "test.joeckr.dev"  # Put your own domain here
-  route: "false"
   className: "nginx"
   path: /
   pathType: "Prefix"
