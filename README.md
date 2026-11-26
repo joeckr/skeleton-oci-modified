@@ -20,7 +20,7 @@ This skeleton provides a standardized approach to:
 - **Standard Ingress Support**: Helm chart configures standard Kubernetes `Ingress` (`networking.k8s.io/v1`).
 - **Helm Chart Included**: Comes with a ready-to-use Helm chart (`chart/`) for templated, reproducible deployments with hardened pod security contexts.
 - **Mise Task Automation**: Built-in `mise` tasks for local compose testing, `podman play kube` simulation, linting, rendering, and cluster deployment.
-- **GitHub Actions CI**: Automated workflows to build and push images based on versions defined in `versions.json`.
+- **GitHub Actions CI**: Automated workflows to build and push images tagged with semantic release versions and `latest`.
 - **Example Implementation**: Includes an NGINX implementation out-of-the-box to demonstrate the necessary modifications.
 
 ## Repository Structure
@@ -30,7 +30,6 @@ This skeleton provides a standardized approach to:
 - `compose.yml`: For local testing and development of the modified image.
 - `compose.upstream.yml`: For local testing and benchmarking against the unmodified upstream image.
 - `mise.toml`: Task runner configuration automating build, compose, play, lint, and cluster deployment workflows.
-- `versions.json`: Used by CI workflows to determine which versions of the image to build.
 - `.github/workflows/`: CI/CD pipelines for building and pushing the images.
 
 ## Security & Hardened Image Architecture
@@ -337,10 +336,7 @@ All testing, linting, and lifecycle operations are conveniently accessible throu
 3. **Update the Helm Chart**
    Navigate to the `chart/` directory and update `Chart.yaml`, `values.yaml`, and the templates to reflect your application's specifics. Configure standard Kubernetes Ingress in `values.yaml`.
 
-4. **Configure Build Versions**
-   Update `versions.json` with the upstream image versions you wish to build.
-
-5. **Run the Test Suite**
+4. **Run the Test Suite**
    Validate changes through the 4-tier process: upstream compose (baseline failure), `mise run compose` (fixed local), `mise run play` (manifest test), and `mise run helm-i` (Kubernetes cluster test).
 
 ## Support
