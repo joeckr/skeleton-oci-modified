@@ -307,7 +307,8 @@ All testing, linting, and lifecycle operations are conveniently accessible throu
 
 | Task | Description | Command |
 |---|---|---|
-| `install` | Install Git hooks (`pre-commit` and `commit-msg`). | `hk install --mise` |
+| `install` | Install Git hooks (`pre-commit` and `commit-msg`) and apply GitHub repo settings. | `hk install --mise` (depends on `repo-settings`) |
+| `repo-settings` | Enable delete-branch-on-merge and auto-merge on GitHub via `gh`. | `gh repo edit --delete-branch-on-merge --enable-auto-merge` |
 | `hk` (or `check`) | Run all repository pre-commit and formatting checks. | `hk check --all` |
 | `compose` | Build and run the modified image in Podman Compose. | `podman compose up -d --build` |
 | `down` | Stop and remove the modified Podman Compose stack. | `podman compose down` |
