@@ -1,4 +1,4 @@
-FROM docker.io/library/nginx:1.31.5-alpine
+FROM docker.io/library/nginx:1.31.8-alpine
 
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
 COPY nginx.conf /etc/nginx/nginx.conf
