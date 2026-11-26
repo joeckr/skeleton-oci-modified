@@ -1,6 +1,4 @@
-ARG VERSION=1.31.5
-ARG REGISTRY=docker.io/library
-FROM $REGISTRY/nginx:$VERSION-alpine
+FROM docker.io/library/nginx:1.31.5-alpine
 
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
 COPY nginx.conf /etc/nginx/nginx.conf
